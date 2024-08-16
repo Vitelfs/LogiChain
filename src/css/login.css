@@ -1,120 +1,127 @@
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
+    position: relative;
     height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #07A9F0 0%, #FFB52D 100%);
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
-    height: 100%;
+    overflow-y: hidden;
 }
 
-.login-box {
-    background: rgba(255, 255, 255, 0.995);
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    width: 400px;
-    text-align: center;
-}
-
-.login-box #logo {
-    width: 100px;
-    margin-bottom: 30px;  
-}
-
-.input-container {
-    position: relative;
-    margin-bottom: 30px;
-}
-
-.input-container input {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #0085fa;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid gray;
-    outline: none;
-    letter-spacing: 1px;
-}
-
-.input-container label {
+.video-repeat {
     position: absolute;
     top: 0;
     left: 0;
-    color: #0085fa;
-    font-size: 16px;
-    pointer-events: none;
-    transition: 0.5s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
-
-.input-container input:focus ~ label,
-.input-container input:valid ~ label {
-    top: -20px;
-    left: 0;
-    color: #0085fa;
-    font-size: 12px;
+.video-repeat video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
-
-.underline {
+.login-form{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #dee1e8c4;
+    backdrop-filter: blur(10px);
     position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
+    top: 0;
+    right: 0;
+}
+#logo-login{
+    width: 150px;
+}
+.login-form h1{
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+.login-form form{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+.login-form form .input-box{
+    position: relative;
     width: 100%;
-    background-color: #FFB52D;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s ease;
+    margin-bottom: 20px;
+}
+.login-form form .input-box input {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1rem;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.25);
+    color: black;
+    transition: border 0.3s ease;
 }
 
-.input-container input:focus ~ .underline {
-    transform: scaleX(1);
+.login-form form .input-box input:focus {
+    border-color: #FFB52D;
+    outline: none;
 }
 
-.btn {
+.login-form form .input-box label{
+    font-size: 1.2rem;
+    pointer-events: none;
+}
+
+.login-form form .remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login-form form .remember-forgot label input{
+    margin-right: 10px;
+}
+
+.login-form form .remember-forgot a{
+    color: black;
+}
+
+.login-form form .remember-forgot a:hover{
+    text-decoration: underline;
+}
+
+.login-form form button{
     width: 100%;
-    background-color: #07A9F0;
+    height: 50px;
+    font-size: 1.2rem;
+    outline: none;
     border: none;
-    padding: 15px 0;
-    font-size: 18px;
-    font-weight: bold;
+    background-color: #0A1A62;
     color: white;
     cursor: pointer;
-    border-radius: 50px;
-    transition: background 0.3s ease;
 }
 
-.btn:hover {
-    background-color: #FFB52D;
+.login-form form button:hover{
+    background-color: #333;
 }
 
-.forgot-password {
-    display: block;
-    margin-top: 20px;
-    font-size: 14px;
+.login-form form .register-link{
+    font-size: 1.2rem;
+}
+
+.login-form form .register-link a{
     color: black;
-    text-decoration: none;
-    transition: color 0.3s ease;
 }
 
-.forgot-password:hover {
-    color: #0085fa;
+.login-form form .register-link a:hover{
+    text-decoration: underline;
 }
+
+
