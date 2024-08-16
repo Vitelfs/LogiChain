@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../img/allenbot_logo.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+        <link rel="stylesheet" href="../css/template.css">
+        <link rel="stylesheet" href="../css/envio.css">
+        <link rel="shortcut icon" href="../img/logistic.png" type="image/x-icon">
+        <title>LogChain</title>
+    </head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div>
+                <h1>LogChain</h1>
+            </div>
+            <form id="search_form">
+                <input type="search" id="search" placeholder="Pesquisar..." autocomplete="off">
+                <button id="btn_search" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <nav class="nav">
+                <p id="user-logged">Logado em:<span id="user-name"></span> </p>
+            </nav>
+        </div>
+    </header>
+    <div id="sidebar">
+        <div id="logo">
+            <img src="../img/logo.png" alt="">
+        </div>
+        <ul class="menu">
+            <li>
+                <a href="./main_screen.html">
+                    <i class="fas fa-box"></i>
+                    <span>Produtos</span>
+                </a>
+            </li>
+            <li>
+                <a href="./delivery.html">
+                    <i class="fa-solid fa-box-archive"></i>
+                    <span>Boxes</span>
+                </a>
+            </li>
+            <li id="active">
+                <a href="./envio_screen.html">
+                    <i class="fas fa-truck"></i>
+                    <span>Encomendas</span>
+                </a>
+            </li>
+            <li >
+                <a href="./configuracao.html">
+                    <i class="fas fa-gear"></i>
+                    <span>Configuração</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="btn_deslogar">
+                    <i class="fas fa-sign-out""></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="popup-search"></div>
+
+    <section>
+        <div class="encomenda-content">
+            <div class="encomenda-header">
+                <div class="header-left">
+                    <div class="header-left-p">
+                        <p>Cadastrar Envio</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="header-right-p">
+                        <p>Encomendas em Trânsito</p>
+                    </div>
+                </div>
+            </div>
+            <div class="encomenda-body">
+                <div class="body-left">
+                    <form id="encomenda-form">
+                        <div class="motorista-data-empresa">
+                            <div class="nome-motorista">
+                                <label for="nome_motorista">Nome do Motorista:</label>
+                                <input type="text" id="nome_motorista" required>
+                            </div>
+                            <div class="data-motorista">
+                                <label for="data-motorista">Data do Envio:</label>
+                                <input type="datetime-local" id="data-motorista" required>
+                            </div>
+                            <div class="empresa-motorista">
+                                <label for="turno">Empresa:</label>
+                                <select name="turno" id="empresa" required>
+                                    <option value="" disabled selected>Selecione</option>
+                                    <option value="manha">Manha</option>
+                                    <option value="tarde">Tarde</option>
+                                    <option value="noite">Noite</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cpf-placa-destinatario">
+                            <div class="cpf-destinatario">
+                                <label for="cpf-motorista">CPF do Motorista:</label>
+                                <input type="text" id="cpf-motorista" required>
+                            </div>
+                            <div class="placa-veiculo">
+                                <label for="placa-veiculo">Placa do veiculo:</label>
+                                <input type="text" id="placa-veiculo" required>
+                            </div>
+                            <div class="destinatario">
+                                <label for="destinatario">Destinatário:</label>
+                                <input type="text" id="destinatario" required>
+                            </div>
+                        </div>
+                        <button id="enviar_botao" type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form> 
+                </div>
+                <div class="body-right">
+                    <ul class="feedback-ul" id="feedback-ul">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../js/envio.js"></script>
+</body>
+</html>
