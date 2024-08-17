@@ -2,7 +2,7 @@ import { auth, signInWithEmailAndPassword, sendPasswordResetEmail, signOut, onAu
 
 function logout() {
     signOut(auth).then(() => {
-        window.location.href = "../../login.html";
+        window.location.href = "../../index.html";
     }).catch((error) => {
         console.log(error);
     });
@@ -11,8 +11,8 @@ function verificarUser() {
     
     onAuthStateChanged(auth, (user) => {
         if (!user) {
-            if (window.location.pathname !== "/login.html") {
-                window.location.href = "../../login.html";
+            if (window.location.pathname !== "/index.html") {
+                window.location.href = "../../index.html";
             }
         } else {
             console.log("Usuário autenticado:", user.email);
