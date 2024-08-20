@@ -8,16 +8,18 @@ function logout() {
     });
 }
 function verificarUser() {
-    
-    onAuthStateChanged(auth, (user) => {
-        if (!user) {
-            if (window.location.pathname !== "/login.html") {
-                window.location.href = "../../login.html";
+    return new Promise((resolve, reject) => {
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                if (window.location.pathname !== "/login.html") {
+                    window.location.href = "../../login.html";
+                }
+                reject("Usuário não autenticado");
+            } else {
+                console.log("Usuário autenticado:", user.email);
+                resolve(true);
             }
-        } else {
-            console.log("Usuário autenticado:", user.email);
-            return true;
-        }
+        });
     });
 }
 

@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="../css/template.css">
         <link rel="stylesheet" href="../css/envio.css">
         <link rel="shortcut icon" href="../img/logistic.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
         <title>LogChain</title>
     </head>
 <body>
@@ -76,7 +78,7 @@
                 </div>
                 <div class="header-right">
                     <div class="header-right-p">
-                        <p>Encomendas em Trânsito</p>
+                        <p>Selecione a rota</p>
                     </div>
                 </div>
             </div>
@@ -116,16 +118,27 @@
                                 <input type="text" id="destinatario" required>
                             </div>
                         </div>
+                        <div class="box-div">
+                            <h2>Selecione a(s) Box(es)</h2>
+                            <div class="box">
+                                <ul class="box-ul"></ul>
+                            </div>
+                        </div>
+
+                        
                         <button id="enviar_botao" type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                     </form> 
                 </div>
                 <div class="body-right">
-                    <ul class="feedback-ul" id="feedback-ul">
-                    </ul>
+                    <div id="mapa">
+                        
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <script src="../js/envio.js"></script>
+    
+    </div>
+    <script type="module" src="../js/rota_mapa.js"></script>
 </body>
 </html>
