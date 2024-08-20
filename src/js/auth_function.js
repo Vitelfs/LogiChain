@@ -2,7 +2,7 @@ import { auth, signInWithEmailAndPassword, sendPasswordResetEmail, signOut, onAu
 
 function logout() {
     signOut(auth).then(() => {
-        window.location.href = "../../login.html";
+        window.location.href = "../../index.html";
     }).catch((error) => {
         console.log(error);
     });
