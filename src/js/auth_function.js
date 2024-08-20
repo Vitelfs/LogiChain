@@ -11,8 +11,8 @@ function verificarUser() {
     return new Promise((resolve, reject) => {
         onAuthStateChanged(auth, (user) => {
             if (!user) {
-                if (window.location.pathname !== "/login.html") {
-                    window.location.href = "../../login.html";
+                if (window.location.pathname !== "/index.html") {
+                    window.location.href = "../../index.html";
                 }
                 reject("Usuário não autenticado");
             } else {
