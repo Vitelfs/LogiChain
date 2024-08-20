@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../img/allenbot_logo.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+        <link rel="stylesheet" href="../css/template.css">
+        <link rel="stylesheet" href="../css/products.css">
+        <link rel="shortcut icon" href="../img/logistic.png" type="image/x-icon">
+        <title>LogChain</title>
+        <script defer type="module" src="../js/produtos.js"></script>
+    </head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div>
+                <h1>LogChain</h1>
+            </div>
+            <form id="search_form">
+                <input type="search" id="search" placeholder="Pesquisar..." autocomplete="off">
+                <button id="btn_search" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <nav class="nav">
+                <p id="user-logged">Logado em:<span id="user-name"></span> </p>
+            </nav>
+        </div>
+    </header>
+    <div id="sidebar">
+        <div id="logo">
+            <img src="../img/logo.png" alt="">
+        </div>
+        <ul class="menu">
+            <li>
+                <a href="./main_screen.html">
+                    <i class="fas fa-box"></i>
+                    <span>Produtos</span>
+                </a>
+            </li>
+            <li>
+                <a href="./delivery.html">
+                    <i class="fa-solid fa-box-archive"></i>
+                    <span>Boxes</span>
+                </a>
+            </li>
+            <li id="active">
+                <a href="./envio_screen.html">
+                    <i class="fas fa-truck"></i>
+                    <span>Encomendas</span>
+                </a>
+            </li>
+            <li >
+                <a href="./configuracao.html">
+                    <i class="fas fa-gear"></i>
+                    <span>Configuração</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="btn_deslogar">
+                    <i class="fas fa-sign-out""></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="popup-search"></div>
+
+    <section>
+        <div class="produto-content">
+            <div class="produto-header">
+                <p>Lista de Produtos</p>
+                <button id="new">+</button>
+            </div>
+            <div class="produto-body">   
+                <div class="divTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Fabricante</th>
+                                <th>Quantidade</th>
+                                <th>Peso UND</th>
+                                <th>Preço UND</th>
+                                <th class="acao">Detalhes</th>
+                                <th class="acao">Editar</th>
+                                <th class="acao">Excluir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+    
+                <div class="modal-container">
+                    <div class="modal">
+                        <form>
+                            <label for="m-nome">Nome</label>
+                            <input id="m-nome" type="text" required />
+    
+                            <label for="m-fabricante">Cidade</label>
+                            <input id="m-cidade" type="text" required />
+    
+                            <label for="m-email">Email</label>
+                            <input id="m-email" type="email" required />
+    
+                            <label for="m-telefone">Telefone</label>
+                            <input id="m-telefone" type="tel" required />
+    
+                            <label for="m-cpf">CPF</label>
+                            <input id="m-cpf" type="text" required />
+    
+                            <button id="btnSalvar">Salvar</button>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+</body>
+</html>
