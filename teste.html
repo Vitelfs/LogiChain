@@ -66,82 +66,67 @@
     <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script>
-        function initializeMap(latitude, longitude) {
-            const map = L.map('mapa').setView([latitude, longitude], 13);
+       let start;
+let end;
+function initializeMap(latitude, longitude) {
+    const map = L.map('mapa').setView([latitude, longitude], 13);
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; OpenStreetMap contributors'
-            }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
 
-            const routingControl = L.Routing.control({
-                waypoints: [],
-                routeWhileDragging: false, // Não exibir detalhes da rota
-                geocoder: L.Control.Geocoder.nominatim()
-            }).addTo(map);
+    const routingControl = L.Routing.control({
+        waypoints: [],
+        routeWhileDragging: false, // Não exibir detalhes da rota
+        geocoder: L.Control.Geocoder.nominatim()
+    }).addTo(map);
 
-            map.on('click', function (e) {
-                const waypointCount = routingControl.getWaypoints().length;
+    map.on('click', function (e) {
+        const waypointCount = routingControl.getWaypoints().length;
 
-                if (waypointCount === 0) {
-                    routingControl.spliceWaypoints(0, 1, e.latlng); // Definir ponto inicial
-                } else if (waypointCount === 1) {
-                    routingControl.spliceWaypoints(1, 1, e.latlng); // Definir ponto final
-                    updateRouteLink(routingControl.getWaypoints()[0].latLng, routingControl.getWaypoints()[1].latLng);
-                    exportRouteAsJSON(routingControl.getWaypoints()[0].latLng, routingControl.getWaypoints()[1].latLng);
-                }
-            });
-
-            // Forçar o Leaflet a redimensionar o mapa corretamente após a inicialização
-            setTimeout(() => {
-                map.invalidateSize();
-            }, 100);
+        if (waypointCount === 0) {
+            routingControl.spliceWaypoints(0, 1, e.latlng); // Definir ponto inicial
+        } else if (waypointCount === 1) {
+            alert('aq');
+            routingControl.spliceWaypoints(1, 1, e.latlng); // Definir ponto final
+            start = routingControl.getWaypoints()[0].latLng;
+            end = routingControl.getWaypoints()[1].latLng;
         }
+    });
 
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(position => {
-                    const latitude = position.coords.latitude;
-                    const longitude = position.coords.longitude;
-                    initializeMap(latitude, longitude);
-                }, () => {
-                    alert('Não foi possível obter a sua localização.');
-                    initializeMap(51.505, -0.09); // Localização padrão se falhar
-                });
-            } else {
-                alert('Geolocalização não é suportada pelo seu navegador.');
-                initializeMap(51.505, -0.09); // Localização padrão
-            }
-        }
+    // Forçar o Leaflet a redimensionar o mapa corretamente após a inicialização
+    setTimeout(() => {
+        map.invalidateSize();
+    }, 100);
+}
 
-        function updateRouteLink(start, end) {
-            const startLat = start.lat;
-            const startLng = start.lng;
-            const endLat = end.lat;
-            const endLng = end.lng;
-            const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${startLat},${startLng}&destination=${endLat},${endLng}&travelmode=driving`;
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            initializeMap(latitude, longitude);
+        }, () => {
+            alert('Não foi possível obter a sua localização.');
+            initializeMap(51.505, -0.09); // Localização padrão se falhar
+        });
+    } else {
+        alert('Geolocalização não é suportada pelo seu navegador.');
+        initializeMap(51.505, -0.09); // Localização padrão
+    }
+}
 
-            document.getElementById('route-link').href = googleMapsUrl;
-            document.getElementById('route-link').textContent = 'Ver rota no Google Maps';
-        }
+function updateRouteLink() {
+    const startLat = start.lat;
+    const startLng = start.lng;
+    const endLat = end.lat;
+    const endLng = end.lng;
+    const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${startLat},${startLng}&destination=${endLat},${endLng}&travelmode=driving`;
 
-        function exportRouteAsJSON(start, end) {
-            const routeData = {
-                start: {
-                    lat: start.lat,
-                    lng: start.lng
-                },
-                end: {
-                    lat: end.lat,
-                    lng: end.lng
-                }
-            };
+    console.log("X:" + googleMapsUrl);
+}
 
-            const blob = new Blob([JSON.stringify(routeData, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            document.getElementById('export-link').href = url;
-        }
-
-        window.onload = getLocation;
+window.onload = getLocation;
     </script>
 </body>
 </html>

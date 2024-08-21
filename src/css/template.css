@@ -14,6 +14,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat';
+    user-select: none;
 }
 body{
     background-color: var(--bg-color);
@@ -49,6 +50,8 @@ nav{
     display: flex;
     align-items: center;
     gap: 10px;
+    position: relative;
+    right: auto;
 }
 nav p{
     color: var(--font-color);
@@ -81,7 +84,7 @@ input[type="search"]::-webkit-search-cancel-button {
     display: none;
 }
 #search:focus{
-    width: 500px;
+    width: 850px;
     transition: 0.5s;
     z-index: 1001;
 }
