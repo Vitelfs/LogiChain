@@ -1,0 +1,271 @@
+
+:root{
+    --primary-color: #146eb4;
+    --secondary-color: #ff9900;
+    --tertiary-color: #000000;
+    --quaternary-color: #232f3e;
+    --button-no-hover-color: #FEBD69;
+    --font-color: #f2f2f2;
+    --bg-color: #ffffff7a;
+    --white: #ffffff;
+}
+
+section{
+    position: fixed;
+    top: 12vh;
+    width: 100vw;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--font-color);
+}
+
+.produto-content{
+    position: relative;
+    top: 0;
+    left: 3%;
+    width: 90vw;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
+}
+
+.produto-header{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    background-color: var(--secondary-color);
+    border-radius: 10px 10px 0 0;
+}
+
+.produto-header p{
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 10px 0 0 0;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+#new {
+    font-size: 24px;    
+    border-radius: 5px;
+    height: max-content;
+    width: 5%;
+    cursor: pointer;
+    color: white;
+    background-color: var(--quaternary-color);
+}
+
+.produto-body{
+    position: absolute;
+    top: 7%;
+    width: 100%;
+    height: 93%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--quaternary-color);
+    border-radius: 0 0 10px 10px;
+    border-top: 2px solid var(--white);
+}
+
+.divTable {
+    padding: 10px;
+    width: 100%;
+    height:inherit; 
+    overflow:auto;
+}
+
+table {
+    width: 100%;
+    border-spacing: 10px;
+    word-break: break-all;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: var(--secondary-color);
+}
+
+tr {
+    border-bottom: 1px solid var(--font-color);
+}
+
+tbody tr td {
+    vertical-align: text-top;
+    padding: 6px;
+    max-width: 50px;
+}
+
+thead tr th {
+    padding: 5px;
+    text-align: start;
+    margin-bottom: 50px;
+}
+
+tbody tr {
+    margin-bottom: 50px;
+    text-align: start;
+}
+
+thead tr th.acao {
+    width: 100px!important;
+    text-align: center;
+}
+
+.icon-prod {
+    margin-top: 5%;
+    width: 30%;
+    height: 30%;
+}
+
+.icon-prod:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* Estilos do modal */
+.modal-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.modal {
+    position: absolute;
+    height: 90%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    background-color: var(--font-color);
+    border-radius: 10px;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.modal label {
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    color: var(--secondary-color);
+}
+
+.m-group1 {
+    width: 100%;
+    justify-content: space-around;
+    position: relative;
+    display: flex;
+}
+
+
+.m-group-align1 {
+    width: 100%;
+    margin: 0 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.m-group1 input {
+    display: flex;
+    outline: none;
+    padding: 5px 10px; 
+    margin-bottom: 20px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.m-group2 {
+    width: 100%;
+    padding: 2%;
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.m-4-group {
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: 50% 50%;
+    gap: 25% 5%;
+}
+
+.m-group-align2 {
+    margin: 0 15%;
+    display: flex;
+    flex-direction: column;
+}
+
+.m-group-align2 input {
+    width: 100%;
+}
+
+.modal button {
+    width: 15%;
+    margin: 10px auto;
+    border-radius: 5px;
+    padding: 5px 10px; 
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.modal button:hover {
+    background-color: var(--button-no-hover-color);
+    cursor: pointer;
+    transition: .4s;
+}
+
+.active {
+    display: flex;
+}
+
+.active .modal {
+    animation: modal .4s;
+}
+
+@keyframes modal {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -60px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+td button {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+td button i {
+    font-size: 25px;
+}
+
+td button i:first-child {
+    margin-right: 10px;
+}
