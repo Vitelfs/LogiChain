@@ -42,7 +42,6 @@
 .box-item {
     padding: 20px;
     border-bottom: 1px solid #ddd;
-    margin-bottom: 10px;
 }
 
 .box-contents-list {
@@ -124,8 +123,124 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    float: right;
 }
 
 .add-btn:hover {
     background-color: #0d4f8b;
+}
+
+@media (min-width: 300px) and (max-width: 1251px){
+    .main-content {
+        font-size: 10px;
+        padding: 15px;
+        max-width: 1200px;
+        margin-top: 80px; /* Ajuste conforme necessário */
+        width: 100%;
+    }
+    
+    .box-container {
+        margin-left: 30px;
+        width: 85%;
+        gap: 1px;
+    }
+
+    .section {
+        padding: 15px;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .current-box {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .box-item {
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+    
+    .box-contents-list li {
+        padding: 5px 0;
+        display: flex;
+    }
+    
+    .available-products h2 {
+        margin-bottom: 10px;
+    }
+    
+    .search-filter {
+        margin-bottom: 10px;
+    }
+    
+    #product-search {
+        width: 70%;
+        padding: 5px;
+    }
+    
+    #product-filter {
+        width: 25%;
+        padding: 5px;
+    }
+    
+    .available-products th, .available-products td {
+        padding: 5px;
+    }
+    
+    .add-btn {
+        padding: 3px 6px;
+        float: right;
+    }
+    .remove-btn {
+        padding: 3px 6px;
+    }
+}
+
+@media (min-width: 550px){
+    .main-content {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 650px){
+    
+}
+
+@media (min-width: 750px){
+    .main-content {
+        font-size: 15px;
+    }
+    .box-container {
+        margin-left: 10px;
+    }
+}
+
+@media (min-width: 850px){
+    
+}
+
+@media (min-width: 950px){
+    .main-content {
+        font-size: 15px;
+    }
+    .box-container {
+        margin: 0;
+    }
+}
+
+@media (min-width: 1050px){
+
+}
+
+@media (min-width: 1150px){
+    .main-content {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 1250px){
+    
 }
