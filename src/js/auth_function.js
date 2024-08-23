@@ -4,11 +4,11 @@ function logout() {
     signOut(auth).then(() => {
         window.location.href = "../../index.html";
     }).catch((error) => {
-        console.log(error);
+        console.error("Erro ao deslogar: ", error);
     });
 }
+
 function verificarUser() {
-    
     onAuthStateChanged(auth, (user) => {
         if (!user) {
             if (window.location.pathname !== "/index.html") {
@@ -16,41 +16,37 @@ function verificarUser() {
             }
         } else {
             console.log("Usuário autenticado:", user.email);
-            return true;
+            document.getElementById("user-name").textContent = user.email;
         }
     });
 }
 
-
-
-function login (email, password) {
-
-    signInWithEmailAndPassword(auth, email, password) 
+function login(email, password) {
+    signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            const user = userCredential.user;
-            
             alert("Login efetuado com sucesso!");
-
             window.location.href = "./src/pages/main_screen.html";
         })
         .catch((error) => {
             const errorCode = error.code;
-            const errorMessage = error.message;
-
-            if(errorCode == "auth/wrong-password"){
+            if (errorCode === "auth/wrong-password") {
                 alert("Senha Incorreta!");
-            }
-            if(errorCode == "auth/user-not-found"){
-                alert("Usuário não encontrado!");
+            } else if (errorCode === "auth/user-not-found") {
+                alert("Usuário não encontrado!");
+            } else {
+                alert("Erro ao efetuar login: " + error.message);
             }
         });
 }
 
-function resetarSenha(email){
+function resetarSenha(email) {
     sendPasswordResetEmail(auth, email)
         .then(() => {
             alert("Email enviado com sucesso!");
+        })
+        .catch((error) => {
+            alert("Erro ao enviar email de redefinição: " + error.message);
         });
 }
 
-export { login, logout, resetarSenha, verificarUser }
+export { login, logout, resetarSenha, verificarUser };
