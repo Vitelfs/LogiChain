@@ -3,7 +3,10 @@ import {
   createBox,
   products,
   updateProductQuantity,
-} from "../js/firebase/firebase_config.js";
+  getDoc,
+  doc
+} from "../js/firebase/firestore_operations.js";
+import { db } from "../js/firebase/firebase_config.js";
 
 const createBoxBtn = document.getElementById("create-box-btn");
 const modal = document.getElementById("create-box-modal");
@@ -11,6 +14,10 @@ const closeBtn = document.querySelector(".close-btn");
 const createBoxForm = document.getElementById("create-box-form");
 const modalProductList = document.getElementById("modal-product-list");
 let selectedProducts = [];
+
+const productList = document.getElementById("product-list");
+const productSearch = document.getElementById("product-search");
+const productFilter = document.getElementById("product-filter");
 
 // Função para abrir o modal
 createBoxBtn.addEventListener("click", async () => {
@@ -121,3 +128,73 @@ createBoxForm.addEventListener("submit", async (e) => {
     );
   }
 });
+
+// Função para carregar produtos na tela principal
+async function loadAvailableProducts() {
+  const productsSnapshot = await exportProducts();
+  productList.innerHTML = "";
+
+  productsSnapshot.forEach((doc) => {
+    const product = doc.data();
+    const productRow = document.createElement("tr");
+
+    productRow.innerHTML = `
+      <td>${product.nome}</td>
+      <td>${product.quantidade}</td>
+      <td><button class="view-product-btn" data-id="${doc.id}">Ver Detalhes</button></td>
+    `;
+
+    productList.appendChild(productRow);
+  });
+
+  // Adicionar event listeners para os botões "Ver Detalhes"
+  document.querySelectorAll('.view-product-btn').forEach(button => {
+    button.addEventListener('click', viewProductDetails);
+  });
+}
+
+// Função para exibir detalhes do produto
+async function viewProductDetails(event) {
+  const productId = event.target.getAttribute('data-id');
+  const productDoc = await getDoc(doc(db, "produtos", productId));
+  
+  if (productDoc.exists()) {
+    const productData = productDoc.data();
+    alert(`Detalhes do Produto:
+Nome: ${productData.nome}
+Quantidade: ${productData.quantidade}
+Descrição: ${productData.descricao || 'Não disponível'}
+Preço: R$ ${productData.preco || 'Não disponível'}
+`);
+  } else {
+    alert("Produto não encontrado!");
+  }
+}
+
+// Função para filtrar produtos
+function filterProducts() {
+  const searchTerm = productSearch.value.toLowerCase();
+  const filterValue = productFilter.value;
+
+  const rows = productList.getElementsByTagName("tr");
+
+  for (const row of rows) {
+    const productName = row.cells[0].textContent.toLowerCase();
+    const quantity = parseInt(row.cells[1].textContent);
+
+    const matchesSearch = productName.includes(searchTerm);
+    const matchesFilter = 
+      filterValue === "all" ||
+      (filterValue === "in-stock" && quantity > 0) ||
+      (filterValue === "out-of-stock" && quantity === 0);
+
+    row.style.display = matchesSearch && matchesFilter ? "" : "none";
+  }
+}
+
+// Adicionar event listeners para pesquisa e filtro
+productSearch.addEventListener("input", filterProducts);
+productFilter.addEventListener("change", filterProducts);
+
+// Carregar produtos disponíveis ao iniciar a página
+document.addEventListener("DOMContentLoaded", loadAvailableProducts);
