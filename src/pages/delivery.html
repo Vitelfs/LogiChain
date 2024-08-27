@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/popup.css">
     <link rel="stylesheet" href="../css/template.css">
     <link rel="stylesheet" href="../css/boxes.css">
     <link rel="shortcut icon" href="../img/logistic.png" type="image/x-icon">
@@ -22,15 +23,12 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form>
-            <nav class="nav">
-                <p id="user-logged">Logado em:<span id="user-name"></span></p>
-            </nav>
+            <button class="back-button">
+                Criar Box
+            </button>
         </div>
     </header>
 
-<a href="boxes.html" class="back-button">
-    <i class="fas fa-arrow-left"></i> Boxes
-</a>
 
     <div id="sidebar">
         <div id="logo">
@@ -157,5 +155,69 @@
                 <span class="legend-text">Erro no envio</span>
             </div>
         </div>
+
+    </div>
+    <div class="popup-box">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Criar Encomenda</h3>
+                <i class="fas fa-times" id="close"></i>
+            </div>
+            
+            <div class="popup-body">
+                <!-- Nome e Descrição da Encomenda -->
+                <div class="section encomenda-info">
+                    <h4>Informações da Encomenda</h4>
+                    <div class="input-group">
+                        <label for="box_name">Nome da Encomenda</label>
+                        <input type="text" id="box_name" placeholder="Digite o nome">
+                    </div>
+                    <div class="input-group">
+                        <label for="descricao-box">Descrição</label>
+                        <textarea id="descricao-box" rows="4" placeholder="Descreva a encomenda"></textarea>
+                    </div>
+                </div>
+                
+                <!-- Seleção de Produtos -->
+                <div class="section selecionar-produtos">
+                    <h4>Selecione os Produtos</h4>
+                    <div class="produtos-container">
+                        <ul id="produtos" class="product-grid">
+                            <li data-product-id="1">
+                                Produto A
+                                <input type="number" min="0" placeholder="Quantidade" class="quantidade" id="quantidade_1">
+                            </li>
+                            <li data-product-id="2">
+                                Produto B
+                                <input type="number" min="0" placeholder="Quantidade" class="quantidade" id="quantidade_2">
+                            </li>
+                            <li data-product-id="3">
+                                Produto C
+                                <input type="number" min="0" placeholder="Quantidade" class="quantidade" id="quantidade_3">
+                            </li>
+                            <li data-product-id="4">
+                                Produto D
+                                <input type="number" min="0" placeholder="Quantidade" class="quantidade" id="quantidade_4">
+                            </li>
+                            <li data-product-id="5">
+                                Produto E
+                                <input type="number" min="0" placeholder="Quantidade" class="quantidade" id="quantidade_5">
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+                
+                <!-- Botão de Confirmação -->
+                <div class="section btn-confirmacao">
+                    <button id="criar-box" class="btn-primary">Confirmar Pedido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script type="module" src="../js/delivery.js"></script>
 </body>
+
 </html>

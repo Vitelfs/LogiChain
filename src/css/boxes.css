@@ -329,9 +329,7 @@
 
 /* Botão */
 .back-button {
-    position: fixed;
-    top: 20px;
-    right: 20px;
+    border:  none;
     background-color: var(--primary-color);
     color: var(--font-color);
     padding: 10px 15px;
