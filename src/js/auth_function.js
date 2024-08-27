@@ -16,6 +16,7 @@ function verificarUser() {
             }
         } else {
             console.log("Usuário autenticado:", user.email);
+            if(window.localStorage)
             return true;
         }
     });

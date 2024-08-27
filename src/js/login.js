@@ -26,6 +26,4 @@ esqueceu_btn.addEventListener('click', (event) => {
 });
 
 //Verificar user
-if(verificarUser()) {
-    window.location.href = "./src/pages/main_screen.html";
-}
+verificarUser();
