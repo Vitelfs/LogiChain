@@ -1,4 +1,4 @@
-import { Timestamp, exportProducts, addDocuments, editDocuments, deleteDocuments } from "./firebase/firebase_config.js";
+import { Timestamp, exportProducts, addDocuments, editDocuments, deleteDocuments } from "./firebase/firestore_operations.js";
 
 const modal = document.querySelector('.modal-container');
 const tbody = document.querySelector('tbody');

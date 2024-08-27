@@ -1,7 +1,5 @@
-import { login, resetarSenha, auth } from "./auth_function.js" //Importa as funções do arquivo firebase_config
+import { login, resetarSenha, auth } from "./auth_function.js"
 import { onAuthStateChanged } from "./firebase/firebase_config.js"
-
-
 
 //Função de login
 
