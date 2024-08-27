@@ -1,6 +1,22 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-import { getFirestore, collection, getDocs, addDoc, doc, setDoc, deleteDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+import { 
+  getFirestore, 
+  collection, 
+  getDocs, 
+  addDoc, 
+  doc, 
+  updateDoc,
+  runTransaction,
+  Timestamp 
+} from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+  signOut,
+} from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC3U7YjxCDJCmjv_WeCmRr-MWk3m8PRi2Q",
@@ -8,15 +24,38 @@ const firebaseConfig = {
   projectId: "logichain-8a4e5",
   storageBucket: "logichain-8a4e5.appspot.com",
   messagingSenderId: "940006643520",
-  appId: "1:940006643520:web:e932b7d8b591c40be18ca5"
+  appId: "1:940006643520:web:e932b7d8b591c40be18ca5",
 };
 
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-
-export { signInWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signOut, Timestamp };
+export async function updateProductQuantity(productId, quantityToRemove) {
+  const productRef = doc(db, "produtos", productId);
+  
+  try {
+    await runTransaction(db, async (transaction) => {
+      const productDoc = await transaction.get(productRef);
+      if (!productDoc.exists()) {
+        throw "O produto não existe!";
+      }
+      
+      const currentQuantity = productDoc.data().quantidade;
+      const newQuantity = currentQuantity - quantityToRemove;
+      
+      if (newQuantity < 0) {
+        throw "Quantidade insuficiente de produto!";
+      }
+      
+      transaction.update(productRef, { quantidade: newQuantity });
+    });
+    console.log(`Quantidade do produto ${productId} atualizada com sucesso.`);
+  } catch (error) {
+    console.error("Erro ao atualizar a quantidade do produto:", error);
+    throw error;
+  }
+}
 
 export const products = collection(db, "produtos");
 
@@ -42,6 +81,30 @@ export function deleteDocuments(colecao, docId) {
 export async function exportDocs() {
   const querySnapshotProdutos = await getDocs(products);
   return {
-    produtos: querySnapshotProdutos
+    produtos: querySnapshotProdutos,
   };
+}
+
+export const boxes = collection(db, "box");
+
+export async function exportBoxes() {
+  const querySnapshot = await getDocs(boxes);
+  return querySnapshot;
+}
+
+export async function createBox(boxData) {
+  const { nome, descricao, produtos } = boxData;
+
+  // Cria a box no Firebase com todos os dados necessários
+  const newBoxRef = await addDoc(boxes, {
+    nome,
+    descricao,
+    status: "pendente",
+    produtos: produtos.map((produto) => ({
+      id: produto.productId,
+      quantidade: produto.quantity,
+    })),
+  });
+
+  return newBoxRef.id;
 }
