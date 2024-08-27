@@ -1,4 +1,5 @@
-import { login, verificarUser, resetarSenha } from "./auth_function.js" //Importa as funções do arquivo firebase_config
+import { login, resetarSenha, auth } from "./auth_function.js" //Importa as funções do arquivo firebase_config
+import { onAuthStateChanged } from "./firebase/firebase_config.js"
 
 
 
@@ -25,5 +26,17 @@ esqueceu_btn.addEventListener('click', (event) => {
     resetarSenha(email);
 });
 
-//Verificar user
+function verificarUser() {
+    
+    onAuthStateChanged(auth, (user) => {
+        if (!user) {
+            if (window.location.pathname !== "/index.html") {
+                window.location.href = "../../index.html";
+            }
+        } else {
+            console.log("Usuário autenticado:", user.email);
+            window.location.href = "./src/pages/products.html";
+        }
+    });
+}
 verificarUser();
