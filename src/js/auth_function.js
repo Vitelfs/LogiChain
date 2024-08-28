@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { auth, signInWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged } from "../js/firebase/firebase_config.js";
 
 function logout() {
@@ -41,4 +42,49 @@ function resetarSenha(email){
         });
 }
 
+=======
+import { auth, signInWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged } from "../js/firebase/firebase_config.js";
+
+function logout() {
+    signOut(auth).then(() => {
+        window.location.href = "../../index.html";
+    }).catch((error) => {
+        console.log(error);
+    });
+}
+
+
+
+
+function login (email, password) {
+
+    signInWithEmailAndPassword(auth, email, password) 
+        .then((userCredential) => {
+            const user = userCredential.user;
+            
+            alert("Login efetuado com sucesso!");
+
+            window.location.href = "./src/pages/main_screen.html";
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            if(errorCode == "auth/wrong-password"){
+                alert("Senha Incorreta!");
+            }
+            if(errorCode == "auth/user-not-found"){
+                alert("Usuário não encontrado!");
+            }
+        });
+}
+
+function resetarSenha(email){
+    sendPasswordResetEmail(auth, email)
+        .then(() => {
+            alert("Email enviado com sucesso!");
+        });
+}
+
+>>>>>>> ff32176b98cf7ee089b1b5c2c0929f028e4fa503
 export { login, logout, resetarSenha, auth }
