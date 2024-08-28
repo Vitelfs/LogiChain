@@ -1,5 +1,3 @@
-/* Estilos para a seção principal do site */
-
 .main-content {
     display: flex;
     flex-direction: column;
@@ -7,7 +5,7 @@
     justify-content: flex-start;
     padding: 20px;
     max-width: 1200px;
-    margin-top: 100px; /* Ajuste conforme necessário */
+    margin-top: 100px; 
     width: 100%;
 }
 
@@ -15,7 +13,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 20px; /* Espaçamento entre as seções */
+    gap: 20px;
 }
 
 .section {
@@ -57,18 +55,58 @@
     align-items: center;
 }
 
-.remove-btn {
-    background-color: var(--secondary-color);
-    color: #fff;
+.remove-btn, .add-btn {
     border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.remove-btn {
+    background: linear-gradient(145deg, #ff9900, #ff6600);
+    color: var(--font-color);
 }
 
 .remove-btn:hover {
-    background-color: #e67e22;
+    background: linear-gradient(145deg, #e67e22, #c76c0c);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.add-btn {
+    background: linear-gradient(145deg, #146eb4, #0d4f8b);
+    color: var(--font-color);
+}
+
+.add-btn:hover {
+    background: linear-gradient(145deg, #0d4f8b, #0a3d7a);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#create-box-btn {
+    background: linear-gradient(145deg, #007bff, #0056b3); 
+    color: #fff; 
+    border: none; 
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px; 
+    font-weight: 600;
+    cursor: pointer; 
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#create-box-btn:hover {
+    background: linear-gradient(145deg, #0056b3, #003d7a);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#create-box-btn:active {
+    background: linear-gradient(145deg, #003d7a, #002a52); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
 .available-products {
@@ -115,27 +153,66 @@
     color: #fff;
 }
 
-.add-btn {
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close-btn {
+    color: #aaa;
     float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-.add-btn:hover {
-    background-color: #0d4f8b;
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-@media (min-width: 300px) and (max-width: 1251px){
+#modal-product-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#modal-product-list th,
+#modal-product-list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#modal-product-list tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#modal-product-list tr:hover {
+    background-color: #ddd;
+}
+
+@media (min-width: 300px) and (max-width: 1251px) {
     .main-content {
         font-size: 10px;
         padding: 15px;
         max-width: 1200px;
-        margin-top: 80px; /* Ajuste conforme necessário */
+        margin-top: 80px; 
         width: 100%;
     }
     
@@ -194,22 +271,21 @@
         padding: 3px 6px;
         float: right;
     }
+    
     .remove-btn {
         padding: 3px 6px;
     }
 }
 
-@media (min-width: 550px){
+@media (min-width: 550px) {
     .main-content {
         font-size: 12px;
     }
 }
 
-@media (min-width: 650px){
-    
-}
+@media (min-width: 650px) {}
 
-@media (min-width: 750px){
+@media (min-width: 750px) {
     .main-content {
         font-size: 15px;
     }
@@ -218,11 +294,9 @@
     }
 }
 
-@media (min-width: 850px){
-    
-}
+@media (min-width: 850px) {}
 
-@media (min-width: 950px){
+@media (min-width: 950px) {
     .main-content {
         font-size: 15px;
     }
@@ -231,16 +305,12 @@
     }
 }
 
-@media (min-width: 1050px){
+@media (min-width: 1050px) {}
 
-}
-
-@media (min-width: 1150px){
+@media (min-width: 1150px) {
     .main-content {
         font-size: 18px;
     }
 }
 
-@media (min-width: 1250px){
-    
-}
+@media (min-width: 1250px) {}
