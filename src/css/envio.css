@@ -510,7 +510,7 @@ h2{
     list-style-type: none;
     padding: 0;
     margin: 0;
-    max-height: 97%;
+    max-height: 70%;
     overflow-y: auto;
 }
 .box-ul li{
