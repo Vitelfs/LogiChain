@@ -1,0 +1,246 @@
+/* Estilos para a seção principal do site */
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    max-width: 1200px;
+    margin-top: 100px; /* Ajuste conforme necessário */
+    width: 100%;
+}
+
+.box-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px; /* Espaçamento entre as seções */
+}
+
+.section {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+    transition: transform 0.2s ease-in-out;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+}
+
+.current-box {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.box-item {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.box-contents-list {
+    list-style: none;
+    padding: 0;
+}
+
+.box-contents-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remove-btn {
+    background-color: var(--secondary-color);
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #e67e22;
+}
+
+.available-products {
+    width: 100%;
+}
+
+.available-products h2 {
+    margin-bottom: 20px;
+}
+
+.search-filter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#product-search {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#product-filter {
+    width: 25%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.available-products table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.available-products th, .available-products td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.available-products th {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.add-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    float: right;
+}
+
+.add-btn:hover {
+    background-color: #0d4f8b;
+}
+
+@media (min-width: 300px) and (max-width: 1251px){
+    .main-content {
+        font-size: 10px;
+        padding: 15px;
+        max-width: 1200px;
+        margin-top: 80px; /* Ajuste conforme necessário */
+        width: 100%;
+    }
+    
+    .box-container {
+        margin-left: 30px;
+        width: 85%;
+        gap: 1px;
+    }
+
+    .section {
+        padding: 15px;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .current-box {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .box-item {
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+    
+    .box-contents-list li {
+        padding: 5px 0;
+        display: flex;
+    }
+    
+    .available-products h2 {
+        margin-bottom: 10px;
+    }
+    
+    .search-filter {
+        margin-bottom: 10px;
+    }
+    
+    #product-search {
+        width: 70%;
+        padding: 5px;
+    }
+    
+    #product-filter {
+        width: 25%;
+        padding: 5px;
+    }
+    
+    .available-products th, .available-products td {
+        padding: 5px;
+    }
+    
+    .add-btn {
+        padding: 3px 6px;
+        float: right;
+    }
+    .remove-btn {
+        padding: 3px 6px;
+    }
+}
+
+@media (min-width: 550px){
+    .main-content {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 650px){
+    
+}
+
+@media (min-width: 750px){
+    .main-content {
+        font-size: 15px;
+    }
+    .box-container {
+        margin-left: 10px;
+    }
+}
+
+@media (min-width: 850px){
+    
+}
+
+@media (min-width: 950px){
+    .main-content {
+        font-size: 15px;
+    }
+    .box-container {
+        margin: 0;
+    }
+}
+
+@media (min-width: 1050px){
+
+}
+
+@media (min-width: 1150px){
+    .main-content {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 1250px){
+    
+}

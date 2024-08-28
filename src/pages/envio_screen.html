@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="../css/template.css">
         <link rel="stylesheet" href="../css/envio.css">
         <link rel="shortcut icon" href="../img/logistic.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
         <title>LogChain</title>
     </head>
 <body>
@@ -33,13 +35,13 @@
         </div>
         <ul class="menu">
             <li>
-                <a href="./main_screen.html">
+                <a href="./products.html">
                     <i class="fas fa-box"></i>
                     <span>Produtos</span>
                 </a>
             </li>
             <li>
-                <a href="./delivery.html">
+                <a href="./boxes.html">
                     <i class="fa-solid fa-box-archive"></i>
                     <span>Boxes</span>
                 </a>
@@ -76,7 +78,7 @@
                 </div>
                 <div class="header-right">
                     <div class="header-right-p">
-                        <p>Encomendas em Trânsito</p>
+                        <p>Selecione a rota</p>
                     </div>
                 </div>
             </div>
@@ -116,16 +118,41 @@
                                 <input type="text" id="destinatario" required>
                             </div>
                         </div>
+                        <div class="box-div">
+                            <h2>Selecione a(s) Box(es)</h2>
+                            <div class="box">
+                                <ul class="box-ul"></ul>
+                            </div>
+                        </div>
+                        <div class="resumo-div">
+                            <h2>Resumo da encomenda</h2>
+                            <div class="box">
+                                
+                            </div>
+                        </div>
+                        <div class="rota-div">
+                            <h2>Rota</h2>
+                            <div class="box">
+                                <p>Origem: <span id="origem"></span></p>
+                                <p>Destino: <span id="destino"></span></p>
+                            </div>
+                        </div>
                         <button id="enviar_botao" type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                     </form> 
                 </div>
                 <div class="body-right">
-                    <ul class="feedback-ul" id="feedback-ul">
-                    </ul>
+                    <div id="mapa">
+                        
+                    </div>
+                    <div class="btn-mapa">
+                        <button id="btn-selecionar" type="button">Selecionar Rota</button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <script src="../js/envio.js"></script>
+    
+    </div>
+    <script type="module" src="../js/rota_mapa.js"></script>
 </body>
 </html>

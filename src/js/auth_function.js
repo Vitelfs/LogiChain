@@ -7,19 +7,7 @@ function logout() {
         console.log(error);
     });
 }
-function verificarUser() {
-    
-    onAuthStateChanged(auth, (user) => {
-        if (!user) {
-            if (window.location.pathname !== "/index.html") {
-                window.location.href = "../../index.html";
-            }
-        } else {
-            console.log("Usuário autenticado:", user.email);
-            return true;
-        }
-    });
-}
+
 
 
 
@@ -53,4 +41,4 @@ function resetarSenha(email){
         });
 }
 
-export { login, logout, resetarSenha, verificarUser }
+export { login, logout, resetarSenha, auth }

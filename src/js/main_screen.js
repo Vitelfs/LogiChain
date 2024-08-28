@@ -28,6 +28,4 @@ logout_btn.addEventListener("click", (event) => {
 
 });
 
-if(verificarUser()) {
-    window.location.href = "./src/pages/main_screen.html";
-}
+verificarUser();

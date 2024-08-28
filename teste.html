@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exportar Rota</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #mapa {
+            height: 80%;
+            width: 100%;
+        }
+
+        #link-container {
+            padding: 10px;
+            background: white;
+        }
+
+        #route-link, #export-link {
+            display: block;
+            color: blue;
+            text-decoration: underline;
+            margin-bottom: 10px;
+        }
+
+        /* Personalização específica para a caixa de pesquisa do geocoder */
+        .leaflet-control-geocoder {
+            width: 200px; /* Ajuste a largura conforme necessário */
+        }
+
+        .leaflet-control-geocoder .geocoder-form {
+            width: 100%; /* Ajuste a largura do formulário de pesquisa */
+        }
+
+        .leaflet-control-geocoder input {
+            width: calc(100% - 40px); /* Ajuste para o tamanho do campo de entrada */
+            box-sizing: border-box;
+        }
+
+        .leaflet-control-geocoder .geocoder-icon {
+            width: 30px; /* Ajuste a largura do ícone de pesquisa */
+            height: 30px; /* Ajuste a altura do ícone de pesquisa */
+        }
+
+        .leaflet-control-geocoder .geocoder-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="mapa"></div>
+    <div id="link-container">
+        <a id="route-link" href="#" target="_blank">Ver rota no Google Maps</a>
+        <a id="export-link" href="#" download="route.json">Exportar Rota como JSON</a>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script>
+       let start;
+let end;
+function initializeMap(latitude, longitude) {
+    const map = L.map('mapa').setView([latitude, longitude], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const routingControl = L.Routing.control({
+        waypoints: [],
+        routeWhileDragging: false, // Não exibir detalhes da rota
+        geocoder: L.Control.Geocoder.nominatim()
+    }).addTo(map);
+
+    map.on('click', function (e) {
+        const waypointCount = routingControl.getWaypoints().length;
+
+        if (waypointCount === 0) {
+            routingControl.spliceWaypoints(0, 1, e.latlng); // Definir ponto inicial
+        } else if (waypointCount === 1) {
+            alert('aq');
+            routingControl.spliceWaypoints(1, 1, e.latlng); // Definir ponto final
+            start = routingControl.getWaypoints()[0].latLng;
+            end = routingControl.getWaypoints()[1].latLng;
+        }
+    });
+
+    // Forçar o Leaflet a redimensionar o mapa corretamente após a inicialização
+    setTimeout(() => {
+        map.invalidateSize();
+    }, 100);
+}
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            initializeMap(latitude, longitude);
+        }, () => {
+            alert('Não foi possível obter a sua localização.');
+            initializeMap(51.505, -0.09); // Localização padrão se falhar
+        });
+    } else {
+        alert('Geolocalização não é suportada pelo seu navegador.');
+        initializeMap(51.505, -0.09); // Localização padrão
+    }
+}
+
+function updateRouteLink() {
+    const startLat = start.lat;
+    const startLng = start.lng;
+    const endLat = end.lat;
+    const endLng = end.lng;
+    const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${startLat},${startLng}&destination=${endLat},${endLng}&travelmode=driving`;
+
+    console.log("X:" + googleMapsUrl);
+}
+
+window.onload = getLocation;
+    </script>
+</body>
+</html>

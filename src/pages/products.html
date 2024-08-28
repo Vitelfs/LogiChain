@@ -6,10 +6,10 @@
         <link rel="shortcut icon" href="../img/allenbot_logo.png" type="image/x-icon">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
         <link rel="stylesheet" href="../css/template.css">
-        <link rel="stylesheet" href="../css/products.css">
+        <link rel="stylesheet" href="../css/product.css">
         <link rel="shortcut icon" href="../img/logistic.png" type="image/x-icon">
         <title>LogChain</title>
-        <script defer type="module" src="../js/produtos.js"></script>
+        <script defer type="module" src="../js/produto.js"></script>
     </head>
 <body>
     <header class="header">
@@ -33,19 +33,19 @@
             <img src="../img/logo.png" alt="">
         </div>
         <ul class="menu">
-            <li>
-                <a href="./main_screen.html">
+            <li id="active">
+                <a href="./products.html">
                     <i class="fas fa-box"></i>
                     <span>Produtos</span>
                 </a>
             </li>
             <li>
-                <a href="./delivery.html">
+                <a href="./boxes.html">
                     <i class="fa-solid fa-box-archive"></i>
                     <span>Boxes</span>
                 </a>
             </li>
-            <li id="active">
+            <li >
                 <a href="./envio_screen.html">
                     <i class="fas fa-truck"></i>
                     <span>Encomendas</span>
@@ -83,9 +83,7 @@
                                 <th>Quantidade</th>
                                 <th>Peso UND</th>
                                 <th>Preço UND</th>
-                                <th class="acao">Detalhes</th>
-                                <th class="acao">Editar</th>
-                                <th class="acao">Excluir</th>
+                                <th class="acao">Detalhes</th>  
                             </tr>
                         </thead>
                         <tbody>
@@ -96,22 +94,43 @@
                 <div class="modal-container">
                     <div class="modal">
                         <form>
-                            <label for="m-nome">Nome</label>
-                            <input id="m-nome" type="text" required />
+
+                            <div class="m-group1">
+                                <div class="m-group-align1">
+                                    <label for="m-nome">Nome</label>
+                                    <input id="m-nome" type="text" required />
+                                </div>
+                                <div class="m-group-align1">
+                                    <label for="m-fabricante">Fabricante</label>
+                                    <input id="m-fabricante" type="text" required />
+                                </div>
+                            </div>
     
-                            <label for="m-fabricante">Cidade</label>
-                            <input id="m-cidade" type="text" required />
-    
-                            <label for="m-email">Email</label>
-                            <input id="m-email" type="email" required />
-    
-                            <label for="m-telefone">Telefone</label>
-                            <input id="m-telefone" type="tel" required />
-    
-                            <label for="m-cpf">CPF</label>
-                            <input id="m-cpf" type="text" required />
-    
-                            <button id="btnSalvar">Salvar</button>
+                            <div class="m-group2">
+                                <div class="m-4-group">
+                                    <div class="m-group-align2">
+                                        <label for="m-pesound">Peso Kg (UND)</label>
+                                        <input id="m-pesound" type="number" required />
+                                    </div>     
+                                    <div class="m-group-align2">
+                                        <label for="m-precound">Preço (UND)</label>
+                                        <input id="m-precound" type="number" required />
+                                    </div> 
+                                    <div class="m-group-align2">
+                                        <label for="m-quantidade">Quantidade</label>
+                                        <input id="m-quantidade" type="number" required />
+                                    </div> 
+                                    <div class="m-group-align2">
+                                        <label for="m-validade">Validade</label>
+                                        <input id="m-validade" type="date" required />
+                                    </div> 
+                                </div>
+                                <div class="m-group-align2">
+                                    <label for="m-desc">Descrição</label>
+                                    <textarea name="m-desc" id="m-desc" rows="6" minlength="1" required></textarea>
+                                </div>
+                            </div>
+                            <button id="btnSalvar">Adicionar</button>
                         </form>
                     </div>
                 </div>

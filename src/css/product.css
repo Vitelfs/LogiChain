@@ -21,6 +21,7 @@ section{
     text-align: center;
     color: var(--font-color);
 }
+
 .produto-content{
     position: relative;
     top: 0;
@@ -32,6 +33,7 @@ section{
     align-items: center;    
     box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
 }
+
 .produto-header{
     position: absolute;
     top: 0;
@@ -76,22 +78,11 @@ section{
     border-top: 2px solid var(--white);
 }
 
-/* Estilos da tabela */
 .divTable {
     padding: 10px;
     width: 100%;
     height:inherit; 
     overflow:auto;
-}
-
-.divTable::-webkit-scrollbar {
-    width: 100%;
-    background-color: whitesmoke; 
-}
-
-.divTable::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: darkgray; 
 }
 
 table {
@@ -106,7 +97,7 @@ thead {
 }
 
 tr {
-    border-bottom: 1px solid rgb(238, 235, 235)!important;
+    border-bottom: 1px solid var(--font-color);
 }
 
 tbody tr td {
@@ -123,6 +114,7 @@ thead tr th {
 
 tbody tr {
     margin-bottom: 50px;
+    text-align: start;
 }
 
 thead tr th.acao {
@@ -130,58 +122,119 @@ thead tr th.acao {
     text-align: center;
 }
 
-tbody tr td.acao {
-    text-align: center;
+.icon-prod {
+    margin-top: 5%;
+    width: 30%;
+    height: 30%;
+}
+
+.icon-prod:hover {
+    transform: scale(1.2);
+    cursor: pointer;
 }
 
 /* Estilos do modal */
 .modal-container {
+    position: absolute;
     width: 100%;
     height: 100%;
     display: none;
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    z-index: 10;
 }
 
 .modal {
-    height: fit-content;
+    position: absolute;
+    height: 90%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px;
-    background-color: white;
+    padding: 30px;
+    background-color: var(--font-color);
     border-radius: 10px;
-    width: 50%;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .modal label {
-    font-size: 14px;
+    font-size: 18px;
+    font-weight: bold;
     width: 100%;
+    color: var(--secondary-color);
 }
 
-.modal input {
+.m-group1 {
     width: 100%;
+    justify-content: space-around;
+    position: relative;
+    display: flex;
+}
+
+
+.m-group-align1 {
+    width: 100%;
+    margin: 0 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.m-group1 input {
+    display: flex;
     outline: none;
     padding: 5px 10px; 
-    width: 100%;
     margin-bottom: 20px;
     border-top: none;
     border-left: none;
     border-right: none;
 }
 
+.m-group2 {
+    width: 100%;
+    padding: 2%;
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.m-4-group {
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: 50% 50%;
+    gap: 25% 5%;
+}
+
+.m-group-align2 {
+    margin: 0 15%;
+    display: flex;
+    flex-direction: column;
+}
+
+.m-group-align2 input {
+    width: 100%;
+}
+
 .modal button {
-    width: 100%;
+    width: 15%;
     margin: 10px auto;
-    outline: none;
-    border-radius: 20px; 
+    border-radius: 5px;
     padding: 5px 10px; 
-    width: 100%;
-    border: none;
-    background-color: #235488;
+    background-color: var(--secondary-color);
     color: white;
+}
+
+.modal button:hover {
+    background-color: var(--button-no-hover-color);
+    cursor: pointer;
+    transition: .4s;
 }
 
 .active {

@@ -1,0 +1,356 @@
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-left: 120px;
+    margin-top: 120px; 
+    width: calc(100% - 120px);
+    position: relative;
+}
+
+.boxes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.box {
+    position: relative;
+    width: 230px; 
+    height: 180px; 
+    border: none;
+    border-radius: 15px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.box-status-dot {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.blue-dot {
+    background-color: #146eb4; 
+}
+
+.yellow-dot {
+    background-color: #ff9900; 
+}
+
+.red-dot {
+    background-color: #ff4b4b; 
+}
+
+/* lapis */
+.edit-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    color: #888;
+    cursor: pointer;
+}
+
+.box-content {
+    text-align: center;
+}
+
+/* legenda */
+.legend {
+    position: fixed;
+    bottom: 40px; 
+    right: 40px;
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    background-color: rgba(255, 255, 255, 0.9); 
+    padding: 15px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+.legend-status-dot, .box-status-dot {
+    width: 20px; 
+    height: 20px; 
+    border-radius: 50%;
+}
+
+.legend-blue-dot {
+    background-color: #146eb4;
+}
+
+.legend-yellow-dot {
+    background-color: #ff9900; 
+}
+
+.legend-red-dot {
+    background-color: #ff4b4b;
+}
+
+.legend-text {
+    font-size: 16px; 
+    color: #333;
+    font-weight: 500;
+}
+.box {
+    position: relative;
+    width: 200px;
+    height: 150px;
+    border: 2px solid #ddd; 
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.box-status-dot {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.box-blue-dot {
+    background-color: #146eb4; 
+}
+
+.box-yellow-dot {
+    background-color: #ff9900; 
+}
+
+.box-red-dot {
+    background-color: #ff4b4b; 
+}
+
+.edit-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    color: #888;
+    cursor: pointer;
+}
+
+.box-content {
+    text-align: center;
+}
+/* BOXES */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-left: 120px;
+    margin-top: 120px; 
+    width: calc(100% - 120px);
+    position: relative;
+}
+
+.boxes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.box {
+    position: relative;
+    width: 230px; 
+    height: 180px; 
+    border: none;
+    border-radius: 15px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.box-status-dot {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.blue-dot {
+    background-color: #146eb4; 
+}
+
+.yellow-dot {
+    background-color: #ff9900; 
+}
+
+.red-dot {
+    background-color: #ff4b4b; 
+}
+
+/* lapis */
+.edit-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    color: #888;
+    cursor: pointer;
+}
+
+.box-content {
+    text-align: center;
+}
+
+/* legenda */
+.legend {
+    position: fixed;
+    bottom: 40px; 
+    right: 40px;
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    background-color: rgba(255, 255, 255, 0.9); 
+    padding: 15px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+.legend-status-dot, .box-status-dot {
+    width: 20px; 
+    height: 20px; 
+    border-radius: 50%;
+}
+
+.legend-blue-dot {
+    background-color: #146eb4;
+}
+
+.legend-yellow-dot {
+    background-color: #ff9900; 
+}
+
+.legend-red-dot {
+    background-color: #ff4b4b;
+}
+
+.legend-text {
+    font-size: 16px; 
+    color: #333;
+    font-weight: 500;
+}
+.box {
+    position: relative;
+    width: 200px;
+    height: 150px;
+    border: 2px solid #ddd; 
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.box-status-dot {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.box-blue-dot {
+    background-color: #146eb4; 
+}
+
+.box-yellow-dot {
+    background-color: #ff9900; 
+}
+
+.box-red-dot {
+    background-color: #ff4b4b; 
+}
+
+.edit-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    color: #888;
+    cursor: pointer;
+}
+
+.box-content {
+    text-align: center;
+}
+
+/* Botão */
+.back-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: var(--font-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.back-button i {
+    font-size: 18px;
+}
+
+.back-button:hover {
+    background-color: var(--secondary-color);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}

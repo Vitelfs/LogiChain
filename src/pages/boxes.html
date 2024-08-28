@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/template.css" />
+    <link rel="stylesheet" href="../css/modal.css" />
+    <link rel="shortcut icon" href="../img/logistic.png" type="image/x-icon" />
+    <script src="../js/boxes.js" type="module" defer></script>
+    <title>LogChain - Boxes</title>
+  </head>
+
+  <style>
+    /* Modal Container */
+    .modal {
+      display: none; /* Oculto por padrão */
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    /* Close Button */
+    .close-btn {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    #modal-product-list table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #modal-product-list th,
+    #modal-product-list td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    #modal-product-list tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    #modal-product-list tr:hover {
+      background-color: #ddd;
+    }
+  </style>
+
+  <body>
+    <header class="header">
+      <div class="header-container">
+        <div>
+          <h1>LogChain</h1>
+        </div>
+        <form id="search_form">
+          <input
+            type="search"
+            id="search"
+            placeholder="Pesquisar..."
+            autocomplete="off"
+          />
+          <button id="btn_search" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+        <nav>
+          <p id="user-logged">Logado em:<span id="user-name"></span></p>
+        </nav>
+      </div>
+    </header>
+
+    <div id="sidebar">
+      <div id="logo">
+        <img src="../img/logo.png" alt="Logo" />
+        <div id="logoTitle">
+          <h1>LogChain</h1>
+        </div>
+      </div>
+      <ul class="menu">
+        <li>
+          <a href="./products.html"
+            ><i class="fas fa-box"></i><span>Produtos</span></a
+          >
+        </li>
+        <li id="active">
+          <a href="./delivery.html"
+            ><i class="fa-solid fa-box-archive"></i><span>Delivery</span></a
+          >
+        </li>
+        <li>
+          <a href="./envio_screen.html"
+            ><i class="fas fa-truck"></i><span>Encomendas</span></a
+          >
+        </li>
+        <li>
+          <a href="./configuracao.html"
+            ><i class="fas fa-gear"></i><span>Configuração</span></a
+          >
+        </li>
+        <li>
+          <a href="#" id="btn_deslogar"
+            ><i class="fas fa-sign-out"></i><span>Logout</span></a
+          >
+        </li>
+      </ul>
+      <div id="menuBarra">
+        <div id="barraMobile" class="barra1"></div>
+        <div id="barraMobile" class="barra2"></div>
+        <div id="barraMobile" class="barra3"></div>
+      </div>
+      <ul class="mobileMenu">
+        <li>
+          <a href="./main_screen.html"
+            ><i class="fas fa-box"></i><span>Produtos</span></a
+          >
+        </li>
+        <li id="active">
+          <a href="./delivery.html"
+            ><i class="fa-solid fa-box-archive"></i><span>Delivery</span></a
+          >
+        </li>
+        <li>
+          <a href="./envio_screen.html"
+            ><i class="fas fa-truck"></i><span>Encomendas</span></a
+          >
+        </li>
+        <li>
+          <a href="./configuracao.html"
+            ><i class="fas fa-gear"></i><span>Configuração</span></a
+          >
+        </li>
+        <li>
+          <a href="#" id="btn_deslogar"
+            ><i class="fas fa-sign-out"></i><span>Logout</span></a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <main class="main-content">
+      <div class="box-container">
+        <button id="create-box-btn">Criar Box</button>
+
+        <div class="section available-products">
+          <h2>Produtos Disponíveis</h2>
+          <div class="search-filter">
+            <input
+              type="search"
+              id="product-search"
+              placeholder="Pesquisar produto..."
+            />
+            <select id="product-filter">
+              <option value="all">Todos</option>
+              <option value="in-stock">Em estoque</option>
+              <option value="out-of-stock">Fora de estoque</option>
+            </select>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Nome do Produto</th>
+                <th>Quantidade Disponível</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody id="product-list">
+              <!-- Lista de produtos será carregada aqui -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal para criar box -->
+    <div id="create-box-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Criar Nova Box</h2>
+        <form id="create-box-form">
+          <label for="box-name">Nome da Box:</label>
+          <input type="text" id="box-name" required />
+
+          <label for="box-description">Descrição:</label>
+          <input type="text" id="box-description" required />
+
+          <div id="modal-product-list">
+            <!-- Produtos disponíveis para adicionar serão carregados aqui -->
+          </div>
+
+          <button type="submit">Finalizar</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
