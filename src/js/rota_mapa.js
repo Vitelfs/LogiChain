@@ -82,7 +82,6 @@ function formatAddress(result) {
     if (address.town && !address.city) parts.push(address.town);
     if (address.state) parts.push(address.state);
 
-    // Retorna as três primeiras partes do endereço
     return parts.slice(0, 3).join(', ');
 }
 

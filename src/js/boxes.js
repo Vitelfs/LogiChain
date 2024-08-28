@@ -54,7 +54,7 @@ async function loadProductsIntoModal() {
     productRow.innerHTML = `
             <td>${product.nome}</td>
             <td>${product.quantidade}</td>
-            <td><input type="number" id="qty-${doc.id}" min="1" max="${product.quantidade}" value="1"></td>
+            <td><input type="number" id="qty-${doc.id}" min="0" max="${product.quantidade}" value="0"></td>
             <td><button class="add-to-box-btn" data-id="${doc.id}">Adicionar</button></td>
         `;
 
