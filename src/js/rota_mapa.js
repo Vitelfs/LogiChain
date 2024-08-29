@@ -53,6 +53,11 @@ function updateRouteLink(startLatLng, endLatLng) {
     const endLng = endLatLng.lng;
     const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${startLat},${startLng}&destination=${endLat},${endLng}&travelmode=driving`;
 
+    document.getElementById('link-rota').setAttribute('href', googleMapsUrl);
+    document.getElementById('link-rota').innerHTML = `Rota do motorista! <i class="fa-solid fa-link"></i>`;
+    document.getElementById('link-rota').addEventListener('click', () => {
+        window.open(googleMapsUrl, '_blank'); 
+    });
     console.log("Google Maps Link: " + googleMapsUrl);""
 }
 

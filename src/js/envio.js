@@ -110,6 +110,7 @@ document.getElementById('encomenda-form').addEventListener('submit', async (even
         data_envio: document.getElementById('data-motorista').value,
         destinatario: document.getElementById('destinatario').value,
         origem: origin,
+        link_rota: document.getElementById('link-rota').value,
         destino: destination,
         boxes: boxes 
     };

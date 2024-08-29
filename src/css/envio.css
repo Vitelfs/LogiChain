@@ -526,3 +526,26 @@ h2{
     font-weight: 400;
     color: var(--white);
 }
+
+
+.link-rota{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    bottom: 3%;
+    left: 2.5%;
+    width: 40%;
+    height: 10%;
+    padding-left: 5px;
+    border: 1px solid var(--white);
+    border-radius: 5px;
+    text-align: center;
+    overflow: hidden;
+}
+#link-rota{
+
+    color: #146eb4;
+    text-decoration: underline;
+    cursor: pointer;
+}
